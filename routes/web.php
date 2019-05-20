@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware' => 'admin'],function(){
 	Route::resource('user', 'UsersController');
 });
+Route::resource('company','CompanyController');
