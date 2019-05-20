@@ -12,6 +12,20 @@
                         @csrf
 
                         <div class="form-group row">
+                            <label for="religion" class="col-md-4 col-form-label text-md-right">{{ __('Religion') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="religion" type="religion" class="form-control @error('religion') is-invalid @enderror" name="religion" value="{{ old('religion') }}" required autocomplete="religion" autofocus>
+
+                                @error('religion')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
