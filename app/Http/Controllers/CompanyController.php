@@ -64,7 +64,7 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
-        //
+        return view('company.edit')->with('company', $company);
     }
 
     /**
@@ -74,9 +74,14 @@ class CompanyController extends Controller
      * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Company $company)
+    public function update(CompanyStoreRequest $request, Company $company)
     {
-        //
+        $company->update(
+        $request->input()
+        );
+        return redirect()
+        ->route('company.show', $company)
+        ->with('message', 'Company updated!');
     }
 
     /**
@@ -87,6 +92,10 @@ class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        $company->delete();
+
+        return redirect()
+            ->route('company.index')
+            ->with('message','Company has been deleted');
     }
 }

@@ -2,11 +2,16 @@
 @section('content')
 	<div class="row">
 		<div class="col">
-			{!! Form::open(
-				['route' => 'company.store'],
-				['class' => 'form']
+			{!! Form::model($company,
+				[
+				'method' => 'put',	
+				'route' => ['company.update', $company->id],
+				'class' => 'form'
+				]
 				)!!}
+
 			@include('layouts._formContainer')	
+		
 			{!! Form::close() !!}
 		</div>
 	</div>	

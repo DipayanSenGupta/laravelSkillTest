@@ -74,7 +74,6 @@
 
         <main class="py-4">
             <div class="container">
-                @include('flash::message')
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -84,6 +83,7 @@
                     </ul>
                 </div>
             @endif
+                @include('flash::message')
                 @yield('content')
             </div>
         </main>
