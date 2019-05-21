@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use Illuminate\Http\Request;
+use App\Http\Requests\CompanyStoreRequest;
 
 class CompanyController extends Controller
 {
@@ -26,7 +27,7 @@ class CompanyController extends Controller
      */
     public function create()
     {
-        //
+        return view('company.create');
     }
 
     /**
@@ -35,9 +36,13 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CompanyStoreRequest $request)
     {
-        //
+        $company = Company::create(
+            $request->input()
+        );
+        flash('Company created!')->success();
+        return redirect()->route('company.show',['company' => $company]);
     }
 
     /**
