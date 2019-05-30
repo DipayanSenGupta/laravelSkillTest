@@ -22,3 +22,4 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin','middleware' => 'admin
 	Route::resource('user', 'UsersController');
 });
 Route::resource('company','CompanyController');
+Route::resource('jhantu','JhantuController');

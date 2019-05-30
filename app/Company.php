@@ -18,9 +18,9 @@ class Company extends Model
         ]
     ];
  }
-	  protected $fillable = [
-        'name', 'email', 'website'
-    ];
+	  // protected $fillable = [
+   //      'name', 'email', 'website'
+   //  ];
    	// protected $guarded = [];
     protected $dates = [
     	'created_at',

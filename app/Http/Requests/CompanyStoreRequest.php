@@ -25,7 +25,8 @@ class CompanyStoreRequest extends FormRequest
         return [
             'name' => 'required|min:10|max:50',
             'email' => 'required|email',
-            'website' =>'required|min:10|max:50'            
+            'website' =>'required|min:10|max:50',
+            // 'filename' => 'required'  
         ];
     }
 
@@ -33,9 +34,10 @@ class CompanyStoreRequest extends FormRequest
         return [
         'name.min' => 'have a bigger name !',
         'name.max' => 'to big name bro',
-        // 'email.email' => 'comply with the format',
-        // 'website.min' => 'have a bigger name !',
-        // 'website.max' => 'to big name bro'
+        'email.email' => 'comply with the format',
+        'website.min' => 'have a bigger name !',
+        'website.max' => 'to big name bro',
+        // 'filename' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ];
     }
 }

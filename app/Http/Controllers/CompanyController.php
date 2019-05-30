@@ -38,9 +38,24 @@ class CompanyController extends Controller
      */
     public function store(CompanyStoreRequest $request)
     {
-        $company = Company::create(
-            $request->input()
-        );
+        // $company = Company::create(
+        //     $request->input()
+        // );
+        $company = new Company;
+        dd($request);
+        $company->name = $request->name;
+        $company->email = $request->emaiil;
+        $company->website = $request->website;
+
+        if($request->hasfile('filename')){
+            foreach ($request->file('filename') as $image) {
+                $name=$image->getClientOriginalName();
+                $image->move(public_path().'/images/',$name);
+                $data[] = $name;
+            }
+        }
+        $company->filename=json_encode($data);
+        $company->save();
         flash('Company created!')->success();
         return redirect()->route('company.show',['company' => $company]);
     }
@@ -76,12 +91,16 @@ class CompanyController extends Controller
      */
     public function update(CompanyStoreRequest $request, Company $company)
     {
-        $company->update(
-        $request->input()
-        );
-        return redirect()
-        ->route('company.show', $company)
-        ->with('message', 'Company updated!');
+        $company = new Company;
+        $company->name = $request->name;
+        $company->email = $request->emaiil;
+        $company->website = $request->website;
+        $company->save();
+        // return redirect()
+        // ->route('company.show', $company)
+        // ->with('message', 'Company updated!');
+        flash('Company edited!')->success();
+        return redirect()->route('company.show',['company' => $company]);
     }
 
     /**

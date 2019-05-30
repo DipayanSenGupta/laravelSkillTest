@@ -34,11 +34,3 @@
 				!!}
 			</div>
 
-			<div class="form-group">
-				{!!	Form::submit('Add Company',
-					[
-						'class' => 'btn btn-info btn-lg',
-						'style' => 'width:100%'
-					])
-				 !!}
-			</div>	
